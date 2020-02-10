@@ -36,12 +36,12 @@ public class FilePartReader {
         while ((readFile = br.readLine()) != null) {
                 returnValue.append(readFile).append("\n");
         }
-        content = returnValue.toString();
         return returnValue.toString();
     }
-    public String readLines() {
+    public String readLines() throws IOException {
         StringBuilder returnValue = new StringBuilder();
         int lineCounter = 1;
+        content = this.read();
         String[] input = content.split("\\r?\\n");
         for (String line : input) {
             if (lineCounter >= fromLine) {
