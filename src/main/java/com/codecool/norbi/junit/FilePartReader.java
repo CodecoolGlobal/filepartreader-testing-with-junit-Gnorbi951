@@ -6,7 +6,6 @@ public class FilePartReader {
     private String filePath;
     private Integer fromLine;
     private Integer toLine;
-    private String content;
 
     public FilePartReader() {
         filePath = "pi34ot2";
@@ -41,7 +40,7 @@ public class FilePartReader {
     public String readLines() throws IOException {
         StringBuilder returnValue = new StringBuilder();
         int lineCounter = 1;
-        content = this.read();
+        String content = this.read();
         String[] input = content.split("\\r?\\n");
         for (String line : input) {
             if (lineCounter >= fromLine) {
