@@ -7,8 +7,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         FilePartReader reader = new FilePartReader();
-        reader.setup("C:\\Codecool\\OOP\\5th_SI\\filepartreader-testing-with-junit-Gnorbi951\\test.txt", 1,5);
+        reader.setup("C:\\Codecool\\OOP\\5th_SI\\filepartreader-testing-with-junit-Gnorbi951\\test.txt", 1,3);
         System.out.println(reader.read());
+        System.out.println(reader.readLines());
     }
 
 }

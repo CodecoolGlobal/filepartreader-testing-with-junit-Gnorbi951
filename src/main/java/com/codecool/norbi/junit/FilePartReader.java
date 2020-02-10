@@ -6,6 +6,7 @@ public class FilePartReader {
     private String filePath;
     private Integer fromLine;
     private Integer toLine;
+    private String content;
 
     public FilePartReader() {
         filePath = "pi34ot2";
@@ -32,10 +33,19 @@ public class FilePartReader {
 
         String readFile; // read as in past tense "red"
         StringBuilder returnValue = new StringBuilder();
-        Integer lineCounter = 1;
         while ((readFile = br.readLine()) != null) {
-            if (fromLine <= lineCounter) {
                 returnValue.append(readFile).append("\n");
+        }
+        content = returnValue.toString();
+        return returnValue.toString();
+    }
+    public String readLines() {
+        StringBuilder returnValue = new StringBuilder();
+        int lineCounter = 1;
+        String[] input = content.split("\\r?\\n");
+        for (String line : input) {
+            if (lineCounter >= fromLine) {
+                returnValue.append(line).append("\n");
             }
             if (lineCounter >= toLine) {
                 break;
@@ -43,9 +53,5 @@ public class FilePartReader {
             lineCounter++;
         }
         return returnValue.toString();
-    }
-
-    public static void main(String[] args) {
-
     }
 }
