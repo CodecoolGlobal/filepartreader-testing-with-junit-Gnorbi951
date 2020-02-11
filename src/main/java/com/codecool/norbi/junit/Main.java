@@ -15,6 +15,8 @@ public class Main {
         System.out.println(orderedAlphabetically.toString());
         List<String> subStringArray = analyzer.getWordsContainingSubstring("no");
         System.out.println(subStringArray);
+        List<String> palindromeArray = analyzer.getStringsWhichPalindromes();
+        System.out.println(palindromeArray);
 
 
     }

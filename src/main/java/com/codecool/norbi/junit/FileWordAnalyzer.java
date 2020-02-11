@@ -33,6 +33,21 @@ public class FileWordAnalyzer {
 
     }
 
+    public List<String> getStringsWhichPalindromes() throws IOException {
+        List<String> wordList = readInputToList();
+        List<String> palindromeList = new ArrayList<>();
+        for (String word : wordList) {
+            StringBuilder reverseWord = new StringBuilder();
+            reverseWord.append(word);
+            reverseWord = reverseWord.reverse();
+            if (reverseWord.toString().equals(word) && word.length()!= 1) {
+                palindromeList.add(word);
+            }
+        }
+        return palindromeList;
+    }
+
+
     private List<String> readInputToList() throws IOException {
         String[] input = reader.readLines().split(" ");
         List<String> unorderedList = new ArrayList<>();
