@@ -14,29 +14,47 @@ public class FileWordAnalyzer {
     }
 
     public List<String> getWordsOrderedAlphabetically() throws IOException {
+        List<String> unorderedList = readInputToList();
+
+        Collections.sort(unorderedList);
+        return unorderedList; // That is ordered
+    }
+
+
+    public List<String> getWordsContainingSubstring (String subString ) throws IOException {
+        List<String> wordList = readInputToList();
+        List<String> foundWords= new ArrayList<>();
+        for (String word : wordList) {
+            if (word.contains(subString)) {
+                foundWords.add(word);
+            }
+        }
+        return foundWords;
+
+    }
+
+    private List<String> readInputToList() throws IOException {
         String[] input = reader.readLines().split(" ");
         List<String> unorderedList = new ArrayList<>();
         // This is for filling the list with the words
         for (String word : input) {
             processWord(unorderedList, word);
         }
-
-        Collections.sort(unorderedList);
-        return unorderedList; // That is ordered
+        return unorderedList;
     }
 
     private void processWord(List<String> unorderedList, String word) {
         if (word.contains("\n")) {
             String[] splitWord = word.split("\n");
             if (splitWord[0].contains(",")) {
-                String rightString = "";
+                StringBuilder rightString = new StringBuilder();
                 for (int i = 0; i < splitWord[0].length(); i++) {
                     char currentChar = splitWord[0].charAt(i);
                     if (currentChar != ',') {
-                        rightString += currentChar;
+                        rightString.append(currentChar);
                     }
                 }
-                unorderedList.add(rightString);
+                unorderedList.add(rightString.toString());
             } else {
                 unorderedList.add(splitWord[0]);
             }
